@@ -10,10 +10,10 @@ public class Evento {
 
     public Evento(String titolo, LocalDate data, int postiTotali) {
         if (data.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException("La data dell'evento non può essere nel passato.");
+            throw new IllegalArgumentException("evento is frnut");
         }
         if (postiTotali <= 0) {
-            throw new IllegalArgumentException("Il numero di posti totali deve essere positivo.");
+            throw new IllegalArgumentException("Non puoi sederti per terra");
         }
 
         this.titolo = titolo;
@@ -49,4 +49,26 @@ public class Evento {
         return postiPrenotati;
     }
 
+    public String prenota(){
+        if (data.isBefore(LocalDate.now())){
+            return "Not possible! Event is frnut";
+        }
+        if (postiPrenotati>=postiTotali){
+            return "Not possible! Stamm chin";
+        }
+        postiPrenotati ++;
+            return "ok, hai prenotato un posto";
+    }
+
+    public String disdici(){
+        if (data.isBefore(LocalDate.now())){
+            return "Not possible! Event is frnut";
+        }
+        if (postiPrenotati == 0){
+            return "Non c'è nessun posto prenotato, impossibile disdire";
+        }
+        postiPrenotati --;
+            return "Ok, hai disdito un posto";
+    }
+    
 }
