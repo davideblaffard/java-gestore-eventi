@@ -42,4 +42,8 @@ public class Concerto extends Evento {
         return String.format(Locale.ITALY, "%.2f€", prezzo);
     }
 
+    @Override
+    public String toString(){
+        return getDateTimeString() + " " + getTitolo() + " " + getFormattedPrice();
+    }
 }
