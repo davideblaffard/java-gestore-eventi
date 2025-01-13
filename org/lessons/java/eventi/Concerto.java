@@ -1,6 +1,8 @@
 package org.lessons.java.eventi;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Concerto extends Evento {
     private LocalTime ora;
@@ -26,6 +28,18 @@ public class Concerto extends Evento {
 
     public void setPrezzo(double prezzo){
         this.prezzo = prezzo;
+    }
+
+    //date formatter getter method
+    public String getDateTimeString(){
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        return getData().format(dateFormatter) + " " + getOra().format(timeFormatter);
+    }
+
+    //price formatter getter method
+    public String getFormattedPrice(){
+        return String.format(Locale.ITALY, "%.2f€", prezzo);
     }
 
 }
