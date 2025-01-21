@@ -1,5 +1,6 @@
 package org.lessons.java.eventi;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -45,6 +46,7 @@ public class Main {
                         System.out.println("I posti già prenotati per questo evento sono: " + evento.getPostiPrenotati());
                         int postiRimanenti = evento.getPostiTotali() - evento.getPostiPrenotati();
                         System.out.println("Per questo evento sono ancora disponibili " + postiRimanenti + " posti!");
+                        
                         break;
                     
                     case 4:
