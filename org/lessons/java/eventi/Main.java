@@ -8,7 +8,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         try{
-            System.out.println("Inserire il titolo dell'evento: ");
+        /* CREO EVENTO chiedendo in input i dati */
+        System.out.println("Inserire il titolo dell'evento: ");
         String titolo = scanner.nextLine();
 
         System.out.println("Inserire la data dell'evento(formato yyyy-mm-dd): ");
@@ -17,12 +18,13 @@ public class Main {
 
         System.out.println("Inserire il numero totale di posti: ");
         int postiTotali = scanner.nextInt();
-
+        /* creo l'oggetto */    
         Evento evento = new Evento(titolo, data, postiTotali);
         System.out.println("Hai creato l'evento: " + evento);
 
         boolean avanti = true;
             while(avanti) {
+                /* MENU azioni possibili su un evento */
                 System.out.println("\n ***** MENU *****");
                 System.out.println("1. Prenota un posto");
                 System.out.println("2. Disdici prenotazione");
@@ -36,6 +38,7 @@ public class Main {
                     case 1:
                         System.out.println(evento.prenota());
                         break;
+                        
                     case 2:
                         System.out.println(evento.disdici());
                         break;
