@@ -1,12 +1,11 @@
 package org.lessons.java.eventi;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
 public class Prova {
-    public static void prova(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Evento evento = null;
 
@@ -17,7 +16,7 @@ public class Prova {
             System.out.println("3. Disdici un posto");
             System.out.println("4. Mostra dettagli dell'evento");
             System.out.println("0. Esci");
-            System.out.print("Scegli un'opzione: ");
+            System.out.print("\nScegli un'opzione: ");
 
             int scelta = Integer.parseInt(scanner.nextLine());
 
@@ -34,7 +33,7 @@ public class Prova {
                         int postiTotali = Integer.parseInt(scanner.nextLine());
 
                         evento = new Evento(titolo, data, postiTotali);
-                        System.out.println("Evento creato con successo!");
+                        System.out.println("\n\nEvento creato con successo!");
 
                         System.out.print("Questo evento è un concerto? (S/N): ");
                         String isConcerto = scanner.nextLine().toUpperCase();
@@ -47,7 +46,7 @@ public class Prova {
                             double prezzo = Double.parseDouble(scanner.nextLine());
 
                             evento = new Concerto(titolo, data, postiTotali, ora, prezzo);
-                            System.out.println("Concerto creato con successo!");
+                            System.out.println("\n\nConcerto creato con successo!");
                         }
                     } catch (Exception e) {
                         System.out.println("Errore: " + e.getMessage());
@@ -66,6 +65,38 @@ public class Prova {
                         System.out.println("Nessun evento o concerto creato.");
                     }
                     break;
-                }    
+                    
+                    case 3:
+                    if (evento != null) {
+                        try {
+                            evento.disdici();
+                            System.out.println("Disdetta effettuata con successo!");
+                        } catch (Exception e) {
+                            System.out.println("Errore: " + e.getMessage());
+                        }
+                    } else {
+                        System.out.println("Nessun evento o concerto creato.");
+                    }
+                    break;
+
+                    case 4:
+                    if (evento != null) {
+                        System.out.println("\n" + evento);
+                        System.out.println("Posti rimanenti: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
+                    } else {
+                        System.out.println("Nessun evento o concerto creato.");
+                    }
+                    break;
+
+                    case 0: 
+                    System.out.println("Uscita dal programma.");
+                    scanner.close();
+                    return;
+
+                    default:
+                    System.out.println("Opzione non valida. Riprova.");
+
             }
         }
+    }
+}
